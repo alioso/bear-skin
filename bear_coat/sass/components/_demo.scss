@@ -1,0 +1,108 @@
+// This file is for the Bear Skin demo only and can be deleted 
+// or commented out without affecting the general theming
+
+.view-features {
+	padding-bottom: 30px;
+	.views-exposed-widgets {
+		margin: 0;
+	}
+	.views-exposed-form {
+		padding: 20px 20px 0 20px;
+		margin-bottom: 30px;
+		background: #eee;
+		border: 1px solid #ddd;
+	}
+	.views-exposed-widget {
+		width: 100%;
+		padding: 0;
+		input {
+			max-width: 100%;
+		}
+		@include breakpoint($breakpoint-small-width) {
+			@include col(1/2, $gutter: 4, $cycle: 2);
+		}
+	}
+	.view-content {
+		@include breakpoint($breakpoint-medium-width) {
+			column-count: 3;
+	    column-gap: 3%;
+	    column-width: 30%;
+	  }
+	}
+	.views-row {
+		display: inline-block;
+		width:  100%; 
+		border: 1px solid #ddd;
+		box-shadow: 0 0 5px #ccc;
+		padding: 20px 0 0 0;
+		margin-bottom: 20px;
+		h2, .field, img {
+			padding: 0 20px;
+		}
+		.field-name-body {
+			background: #eee;
+			padding: 20px;
+			border-top: 1px solid #ccc;
+			margin-top: 20px;
+		}
+	}
+}
+
+.node-type-feature {
+	.bm30 {
+		margin-bottom: 30px;
+	}
+	#main {
+		max-width: 100%;
+		.row.top {
+			background: #555;
+			width: calc(100% + 40px);
+			margin-left: -20px;
+			@include breakpoint($breakpoint-to-max-width) {
+				width: 100%;
+				margin-left: 0;
+			}
+			.pane-node-field-featured-image {
+				max-width: $site-max-width;
+				margin: 0 auto;
+				padding: 20px;
+				@include breakpoint($breakpoint-to-max-width) {
+					padding: 20px 0;
+				}
+				img {
+					width: 100%;
+				}
+			}
+		}
+		.column.center {
+			max-width: $site-max-width;
+		}
+	}
+	.panel-pane {
+		clear: both;
+	}
+	.pane-node-title {
+		margin: 0;
+		.pane-title {
+			@include bear-element-invisible;
+		}
+	}
+	.pane-node-field-feature-documentation {
+		padding: 20px;
+		background: #eee;
+		border: 1px solid #bbb;
+	}
+	.geshifilter {
+		margin: 0;
+		padding: 20px;
+		border-radius: 6px;
+		border: 1px solid #bbb;
+	}
+	.field-collection-container {
+		border: 0;
+	}
+	.field-collection-view {
+		padding: 0;
+	}
+}
+

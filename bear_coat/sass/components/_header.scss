@@ -1,0 +1,192 @@
+$header-height: 125px;
+$header-compressed-height: 55px;
+
+@mixin compressHeader {// compressed herder (mobile and scroll)
+  height: $header-compressed-height;
+  padding: 10px 20px;
+  .site-header__logo {
+    width: 50px;
+    opacity: 1;
+    transition: opacity .2s ease-in-out, width .3s ease-in-out;
+    overflow: hidden;
+  }
+  #header {
+    .block-search,
+    .block-views {
+      input.form-text {
+        padding: .4em 1em;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+#header {
+  position: relative;
+  height: 100%;
+  .region-navigation {
+    @include align(v);
+    right: 0;
+    @include breakpoint($breakpoint-medium-width) {
+      right: auto;
+    }
+  }
+  #sidr-wrapper-0 {// this is what we use for our responsive menu
+    $span-transition: all .3s cubic-bezier(0.7, 0, 0.36, 0.63);
+    margin-left: 20px;
+    #sidr-0-button {
+      display: block;
+      width: 25px;
+      height: 30px;
+      position: relative;
+    }
+    span {
+      display: block;
+      position: relative;
+      background: $zivtech-dark;
+      height: 2px;
+      transition: $span-transition;
+      width: 22px;
+      top: 15px;
+      &:before, &:after {
+        content: "";
+        display: block;
+        background: $zivtech-dark;
+        height: 2px;
+        margin-top: 0;
+        position: absolute;
+        width: 22px;
+        transition: $span-transition;
+      }
+      &:before {
+        top: 7px;
+      }
+      &:after {
+        top: -7px;
+      }
+    }
+  }
+}
+
+body.sidr-open {
+  #header {
+    .region-navigation {
+      left: 0;
+    }
+    .site-header__logo {
+      opacity: 0;
+    }
+  }
+  #header #sidr-wrapper-0 {
+    margin-left: 0;
+    span {
+      background: transparent;
+      &:before,
+      &:after {
+        top: 0;
+      }
+      &:before {
+        transform: rotate(45deg);
+      }
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.sidr-animating {
+  .wrapper--header {
+    position: absolute;
+  }
+}
+.wrapper--header {
+  position: fixed;
+  width: 100%;
+  -webkit-filter: drop-shadow(0 3px 2px rgba(0,0,0,0.1));
+  filter: url(../images/shadow.svg#drop-shadow);
+  filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=180);
+  background: #f5f5f5;
+  z-index: 999;
+  transition: all .3s ease-in-out;
+  @include compressHeader;
+  @include breakpoint($breakpoint-medium-width) {
+    padding: 20px 0;
+    height: $header-height;
+    .site-header__logo {
+      display: block;
+      float: left;
+      width: 120px;
+      img {
+        height: auto;
+      }
+    }
+    &.compressed {
+      @include compressHeader;
+      #header {
+        .block-search,
+        .block-views {
+          right: 80px;
+        }
+        a.loginpopup {
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+}
+
+.wrapper--main {
+  padding-top: $header-compressed-height;
+  @include breakpoint($breakpoint-medium-width) {
+    padding-top: $header-height;
+  }
+}
+
+#header {
+  .block-search,
+  .block-views {
+    @include align(v);
+    transition: all .2s ease-in-out;
+    right: 110px;
+    @include breakpoint($breakpoint-medium-width) {
+      right: 0;
+      transition: none;
+    }
+    input.form-text {
+      transition: width .2s ease-in-out;
+      width: 100px !important;
+      @include breakpoint($breakpoint-medium-width) {
+        width: 120px !important;
+      }
+      &:focus {
+        width: 250px !important;
+      }
+    }
+    &.focus {
+      right: 0;
+      top: 18px;
+      width: calc(100% + 40px);
+      left: -20px;
+      padding: 15px 15px 13px;
+      background: rgba(0, 0, 0, .7);
+      @include breakpoint($breakpoint-medium-width) {
+        @include align(v);
+        right: 0;
+        width: auto;
+        background: transparent;
+        left: inherit;
+        padding: 0;
+      }
+    }
+  }
+  a.loginpopup {
+    float: right;
+    margin: -32px 45px 10px 0;
+    @include link-colors($zivtech-dark, $hover: $zivtech-blue, $active: $zivtech-blue, $focus: $zivtech-blue);
+    font-size: 12px;
+    @include breakpoint($breakpoint-medium-width) {
+      margin: 0 10px 10px 0;
+    }
+  }
+}

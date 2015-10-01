@@ -1,0 +1,46 @@
+name = Bear Coat
+description = This is a sub-theme of bear skin, aimed to give an option for a better looking starter theme
+core = 7.x
+base theme = bear_skin
+screenshot  = screenshot.png
+
+stylesheets[all][] = css/bear_coat.css
+
+scripts[] = js/vendor/jquery.jscrollpane.min.js
+scripts[] = js/scripts.js
+
+regions[header]         = Header
+regions[navigation]     = Navigation bar
+regions[highlighted]    = Highlighted
+regions[help]           = Help
+regions[content]        = Content
+regions[sidebar_first]  = First sidebar
+regions[sidebar_second] = Second sidebar
+regions[footer]         = Footer
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = favicon
+features[] = main_menu
+features[] = secondary_menu
+
+
+; Set the default values of settings on the theme-settings.php form.
+
+settings[toggle_slogan] 		   = 0
+settings[toggle_name]  			   = 0
+settings[user_menu]                = 1
+settings[sticky_footer]            = 0
+
+; To make this sub-theme an admin theme with shortcut links next to titles,
+; uncomment the line below.
+
+;settings[shortcut_module_link]    = 1
+
+; To add a Panels layout (which can also be used by Display Suite), uncomment
+; the line below and see the documentation at: http://drupal.org/node/495654
+
+plugins[panels][layouts] = panels-layouts
